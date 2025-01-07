@@ -14,7 +14,7 @@ import scipy.ndimage
 import tifffile
 from skimage.draw import ellipse
 
-from fissa import extraction, readimagejrois
+from fissa312 import extraction, readimagejrois
 
 
 def maybe_make_dir(dirname):
