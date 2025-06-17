@@ -1,6 +1,6 @@
 # FISSA Python Package for Python 3.12
 The original package (1) is from the Rochefort lab, but required some modifications to work on python 3.12.
-This github push made some modifications to make it work (see modifications.md).
+This github push made some modifications to make it work (see modifications.md). <br>
 I do not claim any copyright or other rights from this package.
 
 (1) https://github.com/rochefort-lab/fissa;
