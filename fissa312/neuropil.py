@@ -194,7 +194,7 @@ def separate(
                     message=".*`alpha` was deprecated in.*",
                     category=FutureWarning,
                 )
-                if Version(sklearn.__version__) > Version('1.0'):
+                if Version(sklearn.__version__) >= Version('1.0'):
                     estimator = sklearn.decomposition.NMF(
                         init="nndsvdar" if W0 is None and H0 is None else "custom",
                         n_components=n,
@@ -205,7 +205,7 @@ def separate(
                         max_iter=max_iter,
                         random_state=random_state,
                     )
-                elif Version(sklearn.__version__) > Version('0.17'):
+                elif Version(sklearn.__version__) >= Version('0.17'):
                     estimator = sklearn.decomposition.NMF(
                         init="nndsvdar" if W0 is None and H0 is None else "custom",
                         n_components=n,
