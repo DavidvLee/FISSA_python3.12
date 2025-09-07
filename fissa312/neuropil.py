@@ -13,6 +13,7 @@ import warnings
 import numpy as np
 import numpy.random as rand
 import sklearn.decomposition
+from packaging.version import Version
 
 
 def separate(
@@ -193,16 +194,29 @@ def separate(
                     message=".*`alpha` was deprecated in.*",
                     category=FutureWarning,
                 )
-                estimator = sklearn.decomposition.NMF(
-                    init="nndsvdar" if W0 is None and H0 is None else "custom",
-                    n_components=n,
-                    alpha_W=alpha,
-                    alpha_H=alpha,
-                    l1_ratio=0.5,
-                    tol=tol,
-                    max_iter=max_iter,
-                    random_state=random_state,
-                )
+                if Version(sklearn.__version__) > Version('1.0'):
+                    estimator = sklearn.decomposition.NMF(
+                        init="nndsvdar" if W0 is None and H0 is None else "custom",
+                        n_components=n,
+                        alpha_W=alpha,
+                        alpha_H=alpha,
+                        l1_ratio=0.5,
+                        tol=tol,
+                        max_iter=max_iter,
+                        random_state=random_state,
+                    )
+                elif Version(sklearn.__version__) > Version('0.17'):
+                    estimator = sklearn.decomposition.NMF(
+                        init="nndsvdar" if W0 is None and H0 is None else "custom",
+                        n_components=n,
+                        alpha=alpha,
+                        l1_ratio=0.5,
+                        tol=tol,
+                        max_iter=max_iter,
+                        random_state=random_state,
+                    )
+                else: raise Exception('sklearn version is not to old.')
+                
                 # Perform NMF and find separated signals
                 S_sep = estimator.fit_transform(S.T, W=W0, H=H0)
 
