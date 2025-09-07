@@ -133,7 +133,7 @@ requires-dist = [
     { name = "future", specifier = ">=1.0.0" },
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "joblib", specifier = ">=1.4.2" },
-    { name = "numpy", specifier = "==1.26.2" },
+    { name = "numpy", specifier = ">=1.26.2" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "pillow", specifier = ">=11.1.0" },
     { name = "read-roi", specifier = ">=1.6.0" },
